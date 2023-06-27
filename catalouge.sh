@@ -21,7 +21,7 @@ cd /app &>>/tmp/roboshop.log
 npm install &>>/tmp/roboshop.log
 
 echo -e "\e[33m Creating the Catalogue Services \e[0m"
-cp /home/centos/roboshop-shell2/catalouge.service /etc/systemd/system/catalogue.service &>>/tmp/roboshop.log
+cp /home/centos/roboshop-shell2/catalouge.service /etc/systemd/system/catalogue.service 
 
 echo -e "\e[33m SystemD run  \e[0m"
 systemctl daemon-reload &>>/tmp/roboshop.log
@@ -36,4 +36,4 @@ echo -e "\e[33m install mongodb \e[0m"
 yum install mongodb-org -y &>>/tmp/roboshop.log
 
 echo -e "\e[33m  Loading the catalouge \e[0m"
-mongo --host mongodb-dev.devopssessions.store </app/schema/catalogue.js &>>/tmp/roboshop.log
+mongo --host mongodb-dev.devopssessions.store </app/schema/catalogue.js
