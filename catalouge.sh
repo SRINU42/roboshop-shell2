@@ -36,4 +36,4 @@ echo -e "\e[33m install mongodb \e[0m"
 yum install mongodb-org -y 
 
 echo -e "\e[33m  Loading the catalouge \e[0m"
-mongo --host mongodb-dev.devopssessions.store </app/schema/catalogue.js
+mongo --host 172.31.85.180 </app/schema/catalogue.js
