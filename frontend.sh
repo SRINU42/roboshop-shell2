@@ -13,7 +13,7 @@ cd /usr/share/nginx/html &>>/tmp/roboshop.log
 unzip /tmp/frontend.zip &>>/tmp/roboshop.log
 
 echo -e "\e[33m install niginx \e[0m"
-cp /home/centos/roboshop-shell2/roboshop.conf /etc/nginx/default.d/roboshop.conf &>>/tmp/roboshop.log
+cp /home/centos/roboshop-shell2/roboshop.conf /etc/nginx/default.d/roboshop.conf 
 
 echo -e "\e[33m systemd start \e[0m"
 systemctl enable nginx &>>/tmp/roboshop.log
