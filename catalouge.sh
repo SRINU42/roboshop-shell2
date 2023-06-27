@@ -14,7 +14,7 @@ mkdir /app &>>/tmp/roboshop.log
 echo -e "\e[33m Dowloading and unzip the Catalogue Contend \e[0m"
 curl -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue.zip &>>/tmp/roboshop.log
 cd /app &>>/tmp/roboshop.log
-unzip /tmp/catalogue.zip v
+unzip /tmp/catalogue.zip &>>/tmp/roboshop.log
 
 echo -e "\e[33m Install  nodes  \e[0m"
 cd /app &>>/tmp/roboshop.log
