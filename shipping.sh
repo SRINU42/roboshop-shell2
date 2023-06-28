@@ -18,7 +18,7 @@ mvn clean package &>>/tmp/roboshop.log
 mv target/shipping-1.0.jar shipping.jar &>>/tmp/roboshop.log
 
 echo -e "\e[33m Copy the shipping service  \e[0m"
-cp /home/centos/roboshop-shell2/shipping.services /etc/systemd/system/shipping.service &>>/tmp/roboshop.log
+cp /home/centos/roboshop-shell2/shipping.service /etc/systemd/system/shipping.service &>>/tmp/roboshop.log
 
 
 echo -e "\e[33m Installing the MYSQL \e[0m"
