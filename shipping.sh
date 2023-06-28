@@ -9,15 +9,13 @@ rm -rf /app &>>/tmp/roboshop.log
 mkdir /app &>>/tmp/roboshop.log
 
 echo -e "\e[33m Dowload the Shipping Contend  \e[0m"
-curl -L -o /tmp/shipping.zip https://roboshop-artifacts.s3.amazonaws.com/shipping.zip 
+curl -L -o /tmp/shipping.zip https://roboshop-artifacts.s3.amazonaws.com/shipping.zip &>>/tmp/roboshop.log
 cd /app 
 unzip /tmp/shipping.zip &>>/tmp/roboshop.log
 
 echo -e "\e[33m dowload Maven Dependencies  \e[0m" 
 mvn clean package &>>/tmp/roboshop.log
 mv target/shipping-1.0.jar shipping.jar &>>/tmp/roboshop.log
-
-
 
 
 echo -e "\e[33m Installing the MYSQL \e[0m"
