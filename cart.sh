@@ -21,7 +21,7 @@ cd /app
 npm install &>>/tmp/roboshop.log
 
 echo -e "\e[33m Creating the cart Services \e[0m"
-cp /home/centos/roboshop-shell2/cart.service /etc/systemd/system/cart.service &>>/tmp/roboshop.log
+cp /home/centos/roboshop-shell2/cart.service /etc/systemd/system/cart.service 
 
 echo -e "\e[33m SystemD run  \e[0m"
 systemctl daemon-reload &>>/tmp/roboshop.log
