@@ -1,28 +1,32 @@
-echo -e "\e[33m Installing Golang\e[0m"
-yum install golang -y &>>/tmp/roboshop.log
+source common.sh
+component=dispatch
 
-echo -e "\e[33m adding Roboshop User \e[0m"
-useradd roboshop &>>/tmp/roboshop.log
 
-echo -e "\e[33m Creating Application Directory \e[0m"
-rm -rf /app &>>/tmp/roboshop.log
-mkdir /app &>>/tmp/roboshop.log
+echo -e "${color} Installing Golang${nocolor}"
+yum install golang -y &>>${log_file}
 
-echo -e "\e[33m Dowloading applicatin Content \e[0m"
-curl -L -o /tmp/dispatch.zip https://roboshop-artifacts.s3.amazonaws.com/dispatch.zip 
-cd /app 
-unzip /tmp/dispatch.zip &>>/tmp/roboshop.log
+echo -e "${color} adding Roboshop User ${nocolor}"
+useradd roboshop &>>${log_file}
 
-echo -e "\e[33m Init Dispatch \e[0m"
-cd /app &>>/tmp/roboshop.log
-go mod init dispatch &>>/tmp/roboshop.log
-go get &>>/tmp/roboshop.log
-go build &>>/tmp/roboshop.log
+echo -e "${color} Creating Application Directory ${nocolor}"
+rm -rf ${app_path} &>>${log_file}
+mkdir ${app_path} &>>${log_file}
 
-echo -e "\e[33m Start System service \e[0m"
-cp /home/centos/roboshop-shell2/ dispatch.service /etc/systemd/system/dispatch.service &>>/tmp/roboshop.log
+echo -e "${color} Dowloading applicatin Content ${nocolor}"
+curl -L -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/${component}.zip 
+cd ${app_path} 
+unzip /tmp/${component}.zip &>>${log_file}
 
-echo -e "\e[33m Start SystemD  \e[0m"
-systemctl daemon-reload &>>/tmp/roboshop.log
-systemctl enable dispatch &>>/tmp/roboshop.log
-systemctl restart dispatch &>>/tmp/roboshop.log
+echo -e "${color} Init ${component} ${nocolor}"
+cd ${app_path} &>>${log_file}
+go mod init ${component} &>>${log_file}
+go get &>>${log_file}
+go build &>>${log_file}
+
+echo -e "${color} Start System service ${nocolor}"
+cp /home/centos/roboshop-shell2/ ${component}.service /etc/systemd/system/${component}.service &>>${log_file}
+
+echo -e "${color} Start SystemD  ${nocolor}"
+systemctl daemon-reload &>>${log_file}
+systemctl enable ${component} &>>${log_file}
+systemctl restart ${component} &>>${log_file}

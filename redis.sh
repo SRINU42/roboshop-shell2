@@ -1,15 +1,18 @@
-echo -e "\e[33m Installing the Repo file \e[0m"
-yum install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y &>>/tmp/roboshop.log
+source common.sh
+component=redis
 
-echo -e "\e[33m Enable the Redis 6 Version \e[0m"
-yum module enable redis:remi-6.2 -y &>>/tmp/roboshop.log
+echo -e "${color} Installing the Repo file ${nocolor}"
+yum install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y &>>${log_file}
 
-echo -e "\e[33m Install Redis \e[0m"
-yum install redis -y &>>/tmp/roboshop.log
+echo -e "${color} Enable the ${component} 6 Version ${nocolor}"
+yum module enable ${component}:remi-6.2 -y &>>${log_file}
 
-echo -e "\e[33m  \e[0m"
-sed -i 's/127.0.0.1/0.0.0.0/' /etc/redis.conf /etc/redis/redis.conf &>>/tmp/roboshop.log
+echo -e "${color} Install ${component} ${nocolor}"
+yum install ${component} -y &>>${log_file}
 
-echo -e "\e[33m Enable and Start the Redis \e[0m"
-systemctl enable redis &>>/tmp/roboshop.log
-systemctl restart redis &>>/tmp/roboshop.log
+echo -e "${color}  ${nocolor}"
+sed -i 's/127.0.0.1/0.0.0.0/' /etc/${component}.conf /etc/${component}/${component}.conf &>>${log_file}
+
+echo -e "${color} Enable and Start the ${component} ${nocolor}"
+systemctl enable ${component} &>>${log_file}
+systemctl restart ${component} &>>${log_file}
