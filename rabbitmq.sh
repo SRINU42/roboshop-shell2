@@ -15,5 +15,5 @@ systemctl enable ${component}-server &>>${log_file}
 systemctl start ${component}-server &>>${log_file}
 
 echo -e "${color} Add ${component} Users ${nocolor}"
-rabbitmqctl add_user roboshop roboshop123 &>>${log_file}
+rabbitmqctl add_user roboshop $1 &>>${log_file}
 rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*" &>>${log_file}
