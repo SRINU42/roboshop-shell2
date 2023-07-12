@@ -39,7 +39,7 @@ systemd_setup() {
 
     echo -e "${color} Creating the ${component} Services ${nocolor}"
     cp /home/centos/roboshop-shell2/${component}.service /etc/systemd/system/${component}.service &>>${log_file}
-    sed -i -e 's/roboshop_app_password/$roboshop_app_password/' /home/centos/roboshop-shell2/${component}.service
+    sed -i -e 's/roboshop_app_password/$roboshop_app_password/' /etc/systemd/system/${component}.service 
     stat_check $?
 
     echo -e "${color} SystemD run  ${nocolor}"
