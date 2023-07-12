@@ -92,7 +92,7 @@ mysql_schema_setup() {
     echo $?
 
     echo -e "${color} Load Schema  ${nocolor}"
-    mysql -h mysql-dev.devopssessions.store -uroot -pRoboShop@1 < ${app_path}/schema/${component}.sql &>>${log_file}
+    mysql -h mysql-dev.devopssessions.store -uroot -p${mysql_root_password} < ${app_path}/schema/${component}.sql &>>${log_file}
 
 
 }
