@@ -1,6 +1,5 @@
 
 source common.sh
-component=mongodb
 
 echo -e "${color} mongodb repo file  ${nocolor}"
 cp /home/centos/roboshop-shell2/mongodb.repo /etc/yum.repos.d/mongodb.repo &>>${log_file}
