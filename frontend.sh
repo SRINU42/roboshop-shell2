@@ -1,4 +1,5 @@
 source common.sh
+
 component=frontend
 
 
@@ -6,7 +7,7 @@ echo -e "${color} install niginx ${nocolor}"
 yum install nginx -y &>>${log_file}
 
 
-echo -e "${color} removi content ${nocolor}"
+echo -e "${color} removie content ${nocolor}"
 rm -rf /usr/share/nginx/html/* &>>${log_file}
 
 echo -e "${color} uploading the content ${nocolor}"
