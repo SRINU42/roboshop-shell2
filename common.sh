@@ -18,6 +18,7 @@ app_presetup() {
     id roboshop &>>${log_file}
     if [ $? -eq 1 ]; then
     useradd roboshop &>>${log_file}
+    fi
 
     stat_check $?
 
@@ -25,14 +26,13 @@ app_presetup() {
     rm -rf ${app_path} &>>${log_file}
     mkdir ${app_path} &>>${log_file}
 
-   stat_check $?
+    stat_check $?
 
     echo -e "${color} Dowloading and unzip the ${component} Contend ${nocolor}"
     curl -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/${component}.zip &>>${log_file}
     cd ${app_path} 
     unzip /tmp/${component}.zip &>>${log_file}
     stat_check $?
-
 }
 
 systemd_setup() {
