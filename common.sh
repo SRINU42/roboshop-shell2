@@ -59,6 +59,7 @@ nodejs() {
 
     echo -e "${color}  Install NodeJS  ${nocolor}"
     yum install nodejs -y &>>${log_file}
+    stat_check $? 
 
     app_presetup
 
@@ -66,8 +67,9 @@ nodejs() {
     echo -e "${color} Install  nodes  ${nocolor}"
     cd ${app_path} 
     npm install &>>${log_file}
+    stat_check $? 
 
-   systemd_setup
+    systemd_setup
 
 }
 
@@ -75,13 +77,15 @@ mongo_schema_setup() {
 
     echo -e "${color} mongodb repo file  ${nocolor}"
     cp /home/centos/roboshop-shell2/mongodb.repo /etc/yum.repos.d/mongodb.repo &>>${log_file}
-
+    stat_check $? 
 
     echo -e "${color} install mongodb ${nocolor}"
     yum install mongodb-org -y &>>${log_file}
+    stat_check $? 
 
     echo -e "${color}  Loading the catalouge ${nocolor}"
     mongo --host mongodb-dev.devopssessions.store <${app_path}/schema/${component}.js &>>${log_file}
+    stat_check $? 
 }
 
 
@@ -90,10 +94,11 @@ mysql_schema_setup() {
     echo -e "${color} Installing the MYSQL ${nocolor}"
     yum install mysql -y &>>${log_file}
     echo $?
+    stat_check $? 
 
     echo -e "${color} Load Schema  ${nocolor}"
     mysql -h mysql-dev.devopssessions.store -uroot -p${mysql_root_password} < ${app_path}/schema/${component}.sql &>>${log_file}
-
+    stat_check $? 
 
 }
 
