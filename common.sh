@@ -31,7 +31,7 @@ app_presetup() {
     curl -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/${component}.zip &>>${log_file}
     cd ${app_path} 
     unzip /tmp/${component}.zip &>>${log_file}
-##stat_check $?
+    stat_check $?
 
 }
 

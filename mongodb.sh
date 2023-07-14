@@ -1,5 +1,5 @@
 
-source common.sh
+##source common.sh
 component=mongodb
 
 echo -e "${color} mongodb repo file  ${nocolor}"
