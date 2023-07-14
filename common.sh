@@ -80,11 +80,11 @@ mongo_schema_setup() {
     stat_check $? 
 
     echo -e "${color} install mongodb ${nocolor}"
-    yum install mongodb-org -y &>>${log_file}
+    yum install mongodb-org-shell -y &>>${log_file}
     stat_check $? 
 
     echo -e "${color}  Loading the catalouge ${nocolor}"
-    mongo --host mongodb-dev.devopssessions.store <${app_path}/schema/${component}.js &>>${log_file}
+    mongo --host mongodb-dev.devopssessions.store <${app_path}/schema/$component.js &>>${log_file}
     stat_check $? 
 }
 
